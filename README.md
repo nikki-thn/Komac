@@ -1,6 +1,8 @@
 # Komac
 Mario + Flappy bird hybrid game
 
+# Credits:
+
 Icon made by [https://www.flaticon.com/authors/google] from www.flaticon.com
 
 Character created by: https://dribbble.com/bevouliin
