@@ -1,6 +1,6 @@
 Mario + Flappy bird
 
-![Alt Text](https://github.com/nikki-thn/Arcade-Game/blob/master/Screenshots/Screen%20Shot%202019-03-02%20at%2010.24.24%20PM.png)     ![Alt Text](https://github.com/nikki-thn/Arcade-Game/blob/master/Screenshots/Screen%20Shot%202019-03-01%20at%206.38.58%20PM.png)
+![Alt Text](https://github.com/nikki-thn/Komac/blob/master/Screen%20Shot%202019-03-12%20at%203.04.24%20PM.png)
 
 # Credits:
 
