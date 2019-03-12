@@ -1,4 +1,4 @@
-Mario + Flappy bird hybrid game
+Mario + Flappy bird
 
 # Credits:
 
