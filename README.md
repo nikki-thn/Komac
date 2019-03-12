@@ -1,4 +1,3 @@
-# Komac
 Mario + Flappy bird hybrid game
 
 # Credits:
