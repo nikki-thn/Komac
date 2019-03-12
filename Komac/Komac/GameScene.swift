@@ -5,7 +5,16 @@
 //  Created by Nikki Truong on 2019-03-03.
 //  Copyright © 2019 PenguinExpress. All rights reserved.
 //
+//  Last Modified March 12, 2019
 
+/* Features to be worked on:
+ 1. Stop the game and back to main
+ 2. Leaderboard and store user data to core data
+*/
+
+/* Things to make better:
+ 1. Seque handling
+*/
 import SpriteKit
 import GameplayKit
 
@@ -14,8 +23,19 @@ struct gamePlay {
     static var gameHasEnded = false
     static var gameStarted = false
     
-    static func stopGame() {
-        gamePlay.gameHasEnded = true
+    static var coinTimer: Timer?
+    static var cloudTimer: Timer?
+    static var obstacleTimer: Timer?
+    static var extraLiveTimer: Timer?
+    static var bombTimer: Timer?
+    static var birdTimer: Timer?
+    
+    //stop creating new elements
+    static func stopTimer() {
+        gamePlay.coinTimer?.invalidate()
+        gamePlay.obstacleTimer?.invalidate()
+        gamePlay.extraLiveTimer?.invalidate()
+        gamePlay.birdTimer?.invalidate()
     }
 }
 
@@ -35,13 +55,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     
     var komac: SKSpriteNode?
     var border: SKSpriteNode?
-    
-    var coinTimer: Timer?
-    var cloudTimer: Timer?
-    var obstacleTimer: Timer?
-    var extraLiveTimer: Timer?
-    var bombTimer: Timer?
-    var birdTimer: Timer?
     
     var score = 0
     var life = 0
@@ -133,7 +146,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     
     //when restart is touched
     func restartGame() {
-        cloudTimer?.invalidate()
+        gamePlay.cloudTimer?.invalidate()
         setScene()
         startGame()
     }
@@ -154,7 +167,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     func gameOver() {
         //clearNodes()
         setGameOverScene()
-        stopTimer()
+        gamePlay.stopTimer()
     }
     
     //set scene and other element for the game
@@ -201,27 +214,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     //to adjust how often an element is created
     func startTimers() {
         
-        coinTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in self.createCoin()})
+        gamePlay.coinTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in self.createCoin()})
         
-        cloudTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: {(timer) in self.createCloud()})
+        gamePlay.cloudTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: {(timer) in self.createCloud()})
         
         //bombTimer = Timer.scheduledTimer(withTimeInterval: 20, repeats: true, block: {(timer) in self.createBomb()})
         
-        obstacleTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in self.createObstacle()})
+        gamePlay.obstacleTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: {(timer) in self.createObstacle()})
         
-        extraLiveTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true, block: {(timer) in self.createExtraLive()})
+        gamePlay.extraLiveTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true, block: {(timer) in self.createExtraLive()})
         
-        birdTimer = Timer.scheduledTimer(withTimeInterval: 50, repeats: true, block: { (timer) in
+        gamePlay.birdTimer = Timer.scheduledTimer(withTimeInterval: 50, repeats: true, block: { (timer) in
             self.createBird()})
     }
     
-    //stop creating new elements
-    func stopTimer() {
-        coinTimer?.invalidate()
-        obstacleTimer?.invalidate()
-        extraLiveTimer?.invalidate()
-        birdTimer?.invalidate()
-    }
+
    
     //create birds
     func createBird() {
