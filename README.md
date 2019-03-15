@@ -4,7 +4,7 @@ Mario + Flappy bird
 
 Icon made by [https://www.flaticon.com/authors/google] from www.flaticon.com
 
-Character created by: https://dribbble.com/bevouliin
+Character created by: https://bevouliin.com/
 
 Background music: Caketown by Matthew Pablo
 http://matthewpablo.com/demoreels/
